@@ -1,0 +1,39 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 0 20px 0;
+  background: #060709;
+}
+body nav {
+  display: flex;
+}
+body nav img {
+  margin-left: 20px;
+  height: 10%;
+  width: 10%;
+  border-radius: 50%;
+}
+body nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1.2em;
+  align-items: center;
+  list-style: none;
+  color: #E9DCC3;
+  font-size: 0.8em;
+}
+body main {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  color: #E9DCC3;
+}
+body main section {
+  display: grid;
+  grid-template-areas: "h1 img" "p img";
+}
+body main img {
+  grid-area: img;
+  transform: scaleX(-1);
+  margin-right: 2em;
+  aspect-ratio: 1/2;
+}/*# sourceMappingURL=style.css.map */
