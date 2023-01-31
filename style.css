@@ -1,29 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;800&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+}
+* a {
+  text-decoration: none;
+}
+* ul {
+  list-style: none;
 }
 
-nav {
-  display: flex;
+header {
+  background-color: #060709;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
-nav img {
-  margin-left: 20px;
-  height: 10%;
-  width: 10%;
-  border-radius: 50%;
+header nav {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #060709;
+  overflow: hidden;
+  max-height: 0;
+  top: 100px;
+  transition: max-height 0.5s ease-out;
 }
-nav ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  justify-items: center;
-  list-style: none;
+header nav a {
+  display: block;
+  padding: 30px;
   color: #E9DCC3;
-  font-size: 0.8em;
 }
-nav ul li {
-  padding: 1em;
+header nav a :hover {
+  background-color: #2f3746;
+}
+header .logo {
+  display: inline-block;
+  color: #E9DCC3;
+  font-size: 60px;
+  margin-left: 10px;
+}
+header .hamb {
+  cursor: pointer;
+  float: right;
+  padding: 40px 20px;
+}
+header .hamb-line {
+  background: #E9DCC3;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+}
+header .hamb-line::after, header .hamb-line::before {
+  background: #E9DCC3;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+header .hamb-line::before {
+  top: 5px;
+}
+header .hamb-line::after {
+  top: -5px;
+}
+header .side-menu {
+  display: none;
+}
+header .side-menu:checked ~ nav {
+  max-height: 100%;
+}
+header .side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+header .side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+header .side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top: 0;
 }
 
 body {
@@ -31,31 +93,25 @@ body {
   height: 100vh;
   padding: 20px 0 20px 0;
   background: #060709;
+  min-width: auto;
 }
 body main {
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   color: #E9DCC3;
 }
 body main section {
-  display: grid;
-  grid-template-areas: "h1 img" "p img";
+  display: flex;
+  flex-direction: column;
 }
 body main img {
-  grid-area: img;
-  transform: scaleX(-1);
-  overflow: hidden;
+  display: none;
 }
-body main p, body main h1 {
-  padding: 2em 0 0 1em;
+body main > p {
+  padding: 2em;
   margin: 0;
 }
 body main h1 {
-  font-size: 1.2em;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  padding: 2em 0 0 1em;
+  padding: 1.5em 1.5em 0 1.5em;
+  font-size: 2em;
 }
 body main .event {
   display: flex;
@@ -74,6 +130,9 @@ body main .event article {
   font-size: 0.9em;
   padding: 1em;
   box-shadow: 0px 0px 5px 10px rgba(255, 255, 255, 0.2);
+}
+body main .event article p {
+  padding: 1em;
 }
 
 footer {
@@ -110,4 +169,52 @@ footer .navigation {
 footer .navigation h3 {
   text-decoration: underline;
   padding: 1em 1em 0 0;
+}
+
+@media screen and (min-width: 600px) {
+  body main {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  body main #grid p {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 1.5em;
+  }
+  body main .event {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    font-size: 1em;
+  }
+  footer .socialMedia {
+    font-size: 1em;
+  }
+  footer .navigation {
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 925px) {
+  body main #grid {
+    display: grid;
+    grid-template-areas: "h1 img" "p img";
+  }
+  body main #grid p {
+    padding: 2em;
+  }
+  body main #grid img {
+    display: block;
+    grid-area: img;
+    transform: scaleX(-1);
+  }
+  body main .event {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 1em;
+  }
+  body main .event article {
+    padding: 0.8em;
+  }
+  body main .event article h2 {
+    padding-left: 1em;
+  }
 }/*# sourceMappingURL=style.css.map */
